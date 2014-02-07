@@ -82,7 +82,7 @@ class shodan4php {
 
     /**
      * The classic search method.  Searches shodan for the specified query.
-     * Applicable filters include:
+     * The following filters require 1 credit:
      *  *   city
      *  *   country
      *  *   net
@@ -93,12 +93,13 @@ class shodan4php {
      *  *   isp
      *  *   title
      *  *   html
-     * @param $q string : query to search for.
+     * @param $q string : query to search for
+     * @param $p int : page number (page > 1 requires 1 credit)
      * @return array : key-value encoded array containing the results of your search.
      */
-    function search($q)
+    function search($q,$p=1)
     {
-        return $this->request("search",array("q"=>$q));
+        return $this->request("search",array("q"=>$q,"p"=>$p));
     }
 
 } 
